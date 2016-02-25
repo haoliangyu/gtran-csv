@@ -26,7 +26,7 @@ npm install gtran-csv
 
     options:
 
-    * projection    -   Project csv columns to geojson attributes. Geography coordinates are required:
+    * mapping    -   Map csv columns to geojson attributes. Specifically, geographic coordinates are required:
 
     ``` javascript
     {
@@ -51,7 +51,7 @@ csv.toGeoJson('source.csv')
 
 // Save geojson into CSV file
 csv.fromGeoJson(geojson, 'point.csv', {
-    projection: { x: 'longitude', y: 'latitude'}
+    mapping: { x: 'longitude', y: 'latitude'}
 })
 .then(function(fileName) {
     console.log('CSV file has been saved at:' + fileName);

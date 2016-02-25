@@ -1,5 +1,3 @@
-'use strict';
-
 var promiseLib = require('./promise.js');
 var fs = require('fs');
 var csvParser = require('csv-parse');
@@ -11,8 +9,8 @@ exports.setPromiseLib = setPromiseLib;
 exports.fromGeoJson = function(geojson, fileName, options) {
     if (!Promise) { setPromiseLib(); }
 
-    if(geojson.features.length == 0) {
-        return Promise.reject('No feautre is found at the input geojson.')
+    if(geojson.features.length === 0) {
+        return Promise.reject('No feautre is found at the input geojson.');
     }
 
     var promise = new Promise(function(resolve, reject) {
@@ -34,7 +32,7 @@ exports.fromGeoJson = function(geojson, fileName, options) {
             attributes.push(feature.geometry.coordinates[0].toString());
             attributes.push(feature.geometry.coordinates[1].toString());
 
-            csvData.push(attributes)
+            csvData.push(attributes);
         });
 
         csvData = csvData.join('\n');
@@ -67,8 +65,8 @@ exports.toGeoJson = function(fileName, options) {
 
         var xCoord, yCoord;
         try {
-            xCoord = options.projection.x;
-            yCoord = options.projection.y;
+            xCoord = options.mapping.x;
+            yCoord = options.mapping.y;
         } catch(err) {
             reject('Coordinate columns are not specified.');
         }
@@ -104,7 +102,7 @@ exports.toGeoJson = function(fileName, options) {
     });
 
     return promise;
-}
+};
 
 function setPromiseLib(lib) {
     Promise = promiseLib.set(lib);
