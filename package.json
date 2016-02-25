@@ -1,6 +1,6 @@
 {
   "name": "gtran-csv",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "convert geojson to csv and backwards",
   "main": "src/script.js",
   "directories": {
